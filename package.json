@@ -1,0 +1,38 @@
+{
+  "engines": {
+    "npm": ">=8.1.2",
+    "node": ">=16.13.1"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "start": "node --unhandled-rejections=strict .",
+    "prepare": "husky install",
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "build-watch": "npm run --silent build -- --watch",
+    "lint": "balena-lint src",
+    "lint-fix": "npm run lint -- --fix",
+    "specs": "npm run --silent build && mocha",
+    "try": "npm run --silent lint-fix && npm run --silent specs && npm run --silent start",
+    "test": "npm run lint && npm run specs",
+    "prepack": "npm test"
+  },
+  "devDependencies": {
+    "@balena/lint": "^6.1.1",
+    "@types/chai": "^4.2.22",
+    "@types/chai-as-promised": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "mocha": "^9.1.3",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
+}

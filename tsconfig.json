@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS",
+		"moduleResolution": "Node",
+		"outDir": "dist",
+		"rootDir": "src",
+		"noUnusedParameters": true,
+		"noUnusedLocals": true,
+		"removeComments": true,
+		"sourceMap": true,
+		"strict": true,
+		"target": "es2019",
+		"declaration": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"lib": [ "esnext" ],
+		"experimentalDecorators": true
+	},
+	// "exclude": ["node_modules"],
+	"ts-node": {
+		"files": true
+	},
+	"include": [
+		"src/**/*.ts"
+	]
+}
