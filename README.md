@@ -1,9 +1,8 @@
 # Dreamsheets Scripts
 
-A "Dreamsheet" is a google sheets project that has google app script code it relies upon for extra "super-powers".  
-"Dreamsheets Scripts" is a utility for managing various aspects of developing a scaffolded dreamsheet project/codebase using version controlled typescript. 
+This package includes scripts and configuration used by `create-dreamsheet`. The [create-dreamsheet](https://github.com/product-os/create-dreamsheet) tool is used to scaffold a _dreamsheet_ project/codebase using version controlled typescript. A "dreamsheet" is a google sheets project that has [google-app-script](https://developers.google.com/apps-script/guides/sheets) (typescript) code it relies upon to give the google spreadsheet "super-powers".
 
-## usage
+## Usage
 
 ### `dreamsheets-scripts init <location>`
 Hydrates location with a new, ready to develop dreamsheets project. It will copy template files to location, initialize location as git repo, install dependencies. 
