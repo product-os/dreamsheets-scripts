@@ -1,13 +1,19 @@
 {
+  "name": "dreamsheets-scripts",
   "engines": {
     "npm": ">=8.1.2",
     "node": ">=16.13.1"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
   "files": [
+    "bin/",
     "dist/"
   ],
+  "bin": {
+    "dreamsheets-scripts": "./bin/main.mjs",
+    "dsx": "./bin/main.mjs"
+  },
   "scripts": {
     "start": "node --unhandled-rejections=strict .",
     "prepare": "husky install",
@@ -21,6 +27,14 @@
     "test": "npm run lint && npm run specs",
     "prepack": "npm test"
   },
+  "dependencies": {
+    "@google/clasp": "^2.4.1",
+    "gas-webpack-plugin": "^2.2.1",
+    "ts-loader": "^9.2.9",
+    "webpack": "^5.72.0",
+    "yargs": "^17.4.1",
+    "zx": "^6.0.7"
+  },
   "devDependencies": {
     "@balena/lint": "^6.1.1",
     "@types/chai": "^4.2.22",
@@ -32,7 +46,7 @@
     "lint-staged": "^12.1.2",
     "mocha": "^9.1.3",
     "rimraf": "^3.0.2",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.2"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
   }
 }

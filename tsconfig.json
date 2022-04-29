@@ -1,16 +1,16 @@
 {
 	"compilerOptions": {
-		"module": "CommonJS",
+		"module": "ESNext",
 		"moduleResolution": "Node",
 		"outDir": "dist",
-		"rootDir": "src",
+		"rootDir": "lib",
 		"noUnusedParameters": true,
 		"noUnusedLocals": true,
 		"removeComments": true,
-		"sourceMap": true,
+		"sourceMap": false,
 		"strict": true,
-		"target": "es2019",
-		"declaration": true,
+		"target": "ESNext",
+		"declaration": false,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
 		"lib": [ "esnext" ],
@@ -21,6 +21,7 @@
 		"files": true
 	},
 	"include": [
-		"src/**/*.ts"
+		"lib/**/*.mts",
+		"lib/**/*.ts"
 	]
 }
