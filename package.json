@@ -20,7 +20,7 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
     "build-watch": "npm run --silent build -- --watch",
-    "lint": "balena-lint src",
+    "lint": "balena-lint lib",
     "lint-fix": "npm run lint -- --fix",
     "specs": "npm run --silent build && mocha",
     "try": "npm run --silent lint-fix && npm run --silent specs && npm run --silent start",
