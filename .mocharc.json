@@ -1,6 +1,6 @@
 {
-  "extension": ["ts"],
-  "spec": "dist/**/*.spec.js",
+  "extension": ["ts", "mts"],
+  "spec": "dist/**/*.spec.mjs",
 	// "loader": "ts-node/esm",
   "require": "ts-node/register"
 }
