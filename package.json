@@ -50,8 +50,8 @@
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "versionist": {
-    "publishedAt": "2022-04-29T03:40:04.661Z"
+    "publishedAt": "2022-04-29T03:59:09.315Z"
   }
 }
