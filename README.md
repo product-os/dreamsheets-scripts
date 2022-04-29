@@ -4,11 +4,11 @@ This package includes scripts and configuration used by `create-dreamsheet`. The
 
 ## Usage
 
-### `dreamsheets-scripts init <location>`
+### `dreamsheets-scripts init <location>` (not yet implimented)
 Hydrates location with a new, ready to develop dreamsheets project. It will copy template files to location, initialize location as git repo, install dependencies. 
 
 
-### `dreamsheets-scripts test`
+### `dreamsheets-scripts test` (not yet implimented)
 Will run unit and integration testing
 
 
