@@ -8,7 +8,7 @@ This package includes scripts and configuration used by `create-dreamsheet`. The
 Hydrates location with a new, ready to develop dreamsheets project. It will copy template files to location, initialize location as git repo, install dependencies. 
 
 
-### `dreamsheets-scripts test` (not yet implimented)
+### `dreamsheets-scripts test`
 Will run unit and integration testing
 
 
