@@ -31,6 +31,8 @@
   "dependencies": {
     "@google/clasp": "^2.4.1",
     "gas-webpack-plugin": "^2.2.1",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
     "ts-loader": "^9.2.9",
     "webpack": "^5.72.0",
     "yargs": "^17.4.1",
@@ -40,6 +42,8 @@
     "@balena/lint": "^6.1.1",
     "@types/chai": "^4.2.22",
     "@types/chai-as-promised": "^7.1.4",
+    "@types/google-apps-script": "^1.0.47",
+    "@types/jest": "^27.4.1",
     "@types/mocha": "^9.0.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
