@@ -4,16 +4,21 @@ This package includes scripts and configuration used by `create-dreamsheet`. The
 
 ## Usage
 
-### `dreamsheets-scripts init <location>` (not yet implimented)
+### `dsx init <location>` (not yet implimented)
 Hydrates location with a new, ready to develop dreamsheets project. It will copy template files to location, initialize location as git repo, install dependencies. 
 
 
-### `dreamsheets-scripts test`
-Will run unit and integration testing
+### `dsx test`
+Will run unit ~and integration~ testing. 
+> Integration tests will be implimented in a larger future release
 
 
-### `dreamsheets-scripts build`
+### `dsx build`
 Will bundle the source into a single javascript file (as is necessary for google app script)
 
-### `dreamsheets-scripts push <script-id>`
-Will deploy the bundled script to the specified live google app script 
+### `dsx push <script-id>`
+Will deploy the bundled script to the specified live google app script.
+
+> Before you run this push sub-command, please ensure that you are logged in via [clasp](https://github.com/google/clasp) by running (this only needs to be done once across all projects)
+> ```npx @google/clasp login```
+> Once logged in, your tokens will be saved in `~/.clasprc.json` in your home directory.
