@@ -1,0 +1,15 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# FIXME:
+# `npx --yes --package=lint-staged lint-staged --config ./node_modules/dreamsheets-scripts/config/.lintstagedrc`
+# (WHERE .lintstagedrc  contains `{"*.ts": ["npx @balena/lint --fix"]}`)
+# doesn't work because of https://github.com/okonet/lint-staged/issues/1154
+# so we are doing it manually below instead
+
+echo
+echo "Linting Staged ..."
+npx --yes @balena/lint --fix $(git diff --staged --diff-filter=ACMR --name-only | grep -E '\.ts$|\.js$')
+echo "Done Linting Staged!"
+echo
+
