@@ -2,4 +2,19 @@
 	"*.ts": [
 		"npx @balena/lint --fix"
 	],
+	"*.cts": [
+		"npx @balena/lint --fix"
+	],
+	"*.mts": [
+		"npx @balena/lint --fix"
+	],
+	"*.js": [
+		"npx @balena/lint --fix"
+	],
+	"*.cjs": [
+		"npx @balena/lint --fix"
+	],
+	"*.mjs": [
+		"npx @balena/lint --fix"
+	]
 }

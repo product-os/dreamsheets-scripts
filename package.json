@@ -1,5 +1,13 @@
 {
   "name": "dreamsheets-scripts",
+  "author": {
+    "name": "Somo S.",
+    "email": "somo@mombo.solutions"
+  },
+  "repository": {
+    "type": ".git",
+    "url": "https://github.com/product-os/dreamsheets-scripts.git"
+  },
   "engines": {
     "npm": ">=8.1.2",
     "node": ">=16.13.1"
