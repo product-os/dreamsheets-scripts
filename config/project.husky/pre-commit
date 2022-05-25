@@ -12,4 +12,3 @@ echo "Linting Staged ..."
 npx --yes @balena/lint --fix $(git diff --staged --diff-filter=ACMR --name-only | grep -E '\.ts$|\.js$')
 echo "Done Linting Staged!"
 echo
-
