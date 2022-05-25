@@ -1,120 +1,134 @@
 import { fs, path } from 'zx';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-process.on('unhandledRejection', err => { throw err })
-
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+process.on('unhandledRejection', (err) => {
+	throw err;
+});
 
 export async function init(proj = process.cwd()) {
-  const projName = path.basename(proj) ?? 'my-fancy-dreamsheet'
-  const projDir = path.isAbsolute(proj) ? proj : path.resolve(process.cwd(), proj)
+	const projName = path.basename(proj) ?? 'my-fancy-dreamsheet';
+	const projDir = path.isAbsolute(proj)
+		? proj
+		: path.resolve(process.cwd(), proj);
 
+	const oldWd = process.cwd();
+	try {
+		await fs.ensureDir(projDir);
+		process.chdir(projDir);
 
-  const oldWd = process.cwd()
-  try {
-    await fs.ensureDir(projDir)
-    process.chdir(projDir)
+		// Copy over template files
+		const templateDir = path.resolve(dirname, '../../template');
 
-    // Copy over template files
-    const templateDir = path.resolve(__dirname, '../../template');
+		const add = async (templateFile: string, newName = templateFile) => {
+			if (!templateFile) {
+				return;
+			}
 
-    const add = async (templateFile:string, newName = templateFile, ) => {
-      if (!templateFile) return
+			const templatePath = path.join(templateDir, templateFile);
+			const projFilePath = path.join(projDir, newName);
 
-      const templatePath = path.join(templateDir, templateFile)
-      const projFilePath = path.join(projDir, newName)
+			if (!(await fs.pathExists(projFilePath))) {
+				await fs.copy(templatePath, projFilePath);
+			} else {
+				console.warn(
+					`Skipping: Project file ${templateFile} already exists in ${path.dirname(
+						templatePath,
+					)}`,
+				);
+			}
+		};
 
-      if (!await fs.pathExists(projFilePath)) {
-        await fs.copy(templatePath, projFilePath)
-      } else {
-        console.warn(`Skipping: Project file ${templateFile} already exists in ${path.dirname(templatePath)}`)
-      }
-    }
+		const srcDir = path.join(projDir, './src');
+		await fs.ensureDir(srcDir);
 
-    const srcDir = path.join(projDir, './src');
-    await fs.ensureDir(srcDir)
+		await add('src/index.spec.ts');
+		await add('src/index.ts');
 
-    
-    await add('src/index.spec.ts')
-    await add('src/index.ts')
+		//
+		await add('.editorconfig');
+		await add('LICENSE');
+		await add('tsconfig.template.json', 'tsconfig.json');
+		await add('README.md');
+		await add('repo.yml');
 
-    //
-    await add('.editorconfig')
-    await add('LICENSE')
-    await add('tsconfig.template.json', 'tsconfig.json')
-    await add('README.md')
-    await add('repo.yml')
+		// the following is equivalent to `await add('template-package.json', 'package.json')`
+		const templatePkgPath = path.join(templateDir, 'template-package.json');
+		const packageCfg = await fs.readJSON(templatePkgPath, { encoding: 'utf8' });
+		packageCfg['name'] = projName;
 
-    // await add('package.json')
-    const packageCfg = await fs.readJSON(path.join(templateDir, 'package.json'), {encoding: "utf8"})
-    packageCfg["name"] = projName
-
-    const templatePath = path.join(templateDir, 'package.json')
-    const projFilePath = path.join(projDir, 'package.json')
-
-    if (!await fs.pathExists(projFilePath)) {
-      await fs.writeJSON(path.join(templateDir, 'package.json'), packageCfg, {encoding: "utf8"})
-    } else {
-      console.warn(`Skipping: Project file package.json already exists in ${path.dirname(templatePath)}`)
-    }
-    
-    // npm install
-    try {
-      execSync('npm install --no-audit', { stdio: 'inherit' });
-    } catch (e) {
-      console.warn('Failed install npm dependencies', e);
-      try {
-        fs.removeSync(path.join(projDir, 'node_modules'));
-      } catch (_) {}
+		const projPkgFilePath = path.join(projDir, 'package.json');
+		if (!(await fs.pathExists(projPkgFilePath))) {
+			await fs.writeJSON(projPkgFilePath, packageCfg, { encoding: 'utf8' });
+		} else {
+			console.warn(
+				`Skipping: Project file package.json already exists in ${path.dirname(
+					templatePkgPath,
+				)}`,
+			);
 		}
 
-    // Initialize git repo if necessary
-    const rollbackGit = async () => {
-      try {
-        fs.removeSync(path.join(projDir, '.git'));
-      } catch (_) {}
-    }
+		// npm install
+		try {
+			execSync('npm install --no-audit', { stdio: 'inherit' });
+		} catch (e) {
+			console.warn('Failed install npm dependencies', e);
+			try {
+				fs.removeSync(path.join(projDir, 'node_modules'));
+			} catch (_) {
+				// skip
+			}
+		}
 
-    if (!gitIsInstalled()) {
-      console.warn("WARNING: Git is not installed. Install it from https://git-scm.com/download. Proceeding without it ...")
-      return
-    }
+		// Initialize git repo if necessary
+		const rollbackGit = async () => {
+			try {
+				fs.removeSync(path.join(projDir, '.git'));
+			} catch (_) {
+				// skip
+			}
+		};
 
-    // add .gitignore from templateDir
-    await add('gitignore', '.gitignore')
+		if (!gitIsInstalled()) {
+			console.warn(
+				'WARNING: Git is not installed. Install it from https://git-scm.com/download. Proceeding without it ...',
+			);
+			return;
+		}
 
-    try {
-      execSync('git init', { stdio: 'ignore' });
-    } catch (e) {
-      console.warn('Git repo not initialized', e);
-      await rollbackGit()
-      return
-    }
+		// add .gitignore from templateDir
+		await add('gitignore', '.gitignore');
 
-    try {
-      execSync('git add --all', { stdio: 'ignore' });
-      execSync('git commit -m "Initialize project using Create Dreamsheet"', { stdio: 'ignore', });
-    } catch (e) {
-      // We couldn't commit in already initialized git repo,
-      // maybe the commit author config is not set.
-      // In the future, we might supply our own committer
-      // like Ember CLI does, but for now, let's just
-      // remove the Git files to avoid a half-done state.
-      console.warn('Git commit not created', e);
-      console.warn('Removing .git directory...');
-      await rollbackGit()
-    }
-    console.log("SCAFFOLDING SUCCESSFUL!!")
-  } catch (err) {
-    throw err
-  } finally {
-    process.chdir(oldWd)
-  }
+		try {
+			execSync('git init', { stdio: 'ignore' });
+		} catch (e) {
+			console.warn('Git repo not initialized', e);
+			await rollbackGit();
+			return;
+		}
 
-
-
+		try {
+			execSync('git add --all', { stdio: 'ignore' });
+			execSync('git commit -m "Initialize project using Create Dreamsheet"', {
+				stdio: 'ignore',
+			});
+		} catch (e) {
+			// We couldn't commit in already initialized git repo,
+			// maybe the commit author config is not set.
+			// In the future, we might supply our own committer
+			// like Ember CLI does, but for now, let's just
+			// remove the Git files to avoid a half-done state.
+			console.warn('Git commit not created', e);
+			console.warn('Removing .git directory...');
+			await rollbackGit();
+		}
+		console.log('SCAFFOLDING SUCCESSFUL!!');
+	} catch (err) {
+		throw err;
+	} finally {
+		process.chdir(oldWd);
+	}
 }
-
 
 ///
 // function isInGitRepo() {
@@ -127,14 +141,11 @@ export async function init(proj = process.cwd()) {
 // }
 
 function gitIsInstalled() {
-  try {
-    execSync('git --version', { stdio: 'ignore' });
-    return true;
-  } catch (e) {
-    console.warn('Git is not installed', e);
-    return false;
-  }
+	try {
+		execSync('git --version', { stdio: 'ignore' });
+		return true;
+	} catch (e) {
+		console.warn('Git is not installed', e);
+		return false;
+	}
 }
-
-
-
