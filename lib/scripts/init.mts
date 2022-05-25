@@ -68,18 +68,6 @@ export async function init(proj = process.cwd()) {
 			);
 		}
 
-		// npm install
-		try {
-			execSync('npm install --no-audit', { stdio: 'inherit' });
-		} catch (e) {
-			console.warn('Failed install npm dependencies', e);
-			try {
-				fs.removeSync(path.join(projDir, 'node_modules'));
-			} catch (_) {
-				// skip
-			}
-		}
-
 		// Initialize git repo if necessary
 		const rollbackGit = async () => {
 			try {
@@ -105,6 +93,18 @@ export async function init(proj = process.cwd()) {
 			console.warn('Git repo not initialized', e);
 			await rollbackGit();
 			return;
+		}
+
+		// npm install
+		try {
+			execSync('npm install --no-audit', { stdio: 'inherit' });
+		} catch (e) {
+			console.warn('Failed install npm dependencies', e);
+			try {
+				fs.removeSync(path.join(projDir, 'node_modules'));
+			} catch (_) {
+				// skip
+			}
 		}
 
 		try {
