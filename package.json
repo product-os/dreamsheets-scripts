@@ -9,6 +9,7 @@
   "files": [
     "config/",
     "bin/",
+    "template/",
     "dist/"
   ],
   "bin": {
