@@ -47,6 +47,7 @@ export async function push(
 	process.argv[4] = 'push';
 	process.argv[5] = '--force';
 
+	console.log(`Pushing bundle to https://script.google.com/home/projects/${scriptId}/edit ...\n`)
 	await import('@google/clasp');
 	process.argv = argvBkp;
 }
