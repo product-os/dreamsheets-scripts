@@ -20,7 +20,7 @@
     "lint-fix": "npm run lint -- --fix",
     "test": "dsx test",
     "test:all": "npm run lint && npm run build && npm run test",
-    "push": "dsx push 1dIlULL84YOBBep-0pg4S5SIb4039LQrBj1YsEGfQpZjKN7TpevbriNIA"
+    "push": "dsx push"
   },
   "devDependencies": {
     "@types/google-apps-script": "^1.0.37",
