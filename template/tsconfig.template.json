@@ -1,0 +1,3 @@
+{
+	"extends": "./node_modules/dreamsheets-scripts/config/base-tsconfig.json"
+}
