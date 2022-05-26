@@ -10,7 +10,7 @@
 		"sourceMap": false,
 		"strict": true,
 		"target": "ESNext",
-		"declaration": false,
+		"declaration": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
 		"lib": [ "esnext" ],
