@@ -4,6 +4,7 @@
     "name": "Somo S.",
     "email": "somo@mombo.solutions"
   },
+  "license": "Apache-2.0",
   "repository": {
     "type": ".git",
     "url": "https://github.com/product-os/dreamsheets-scripts.git"
@@ -19,6 +20,11 @@
     "bin/",
     "template/",
     "dist/"
+  ],
+  "keywords": [
+    "google sheets",
+    "gsheets",
+    "google app script"
   ],
   "bin": {
     "dreamsheets-scripts": "./bin/main.mjs",
