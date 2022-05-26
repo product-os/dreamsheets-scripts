@@ -1,16 +1,15 @@
 import { fs, path } from 'zx';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-const dirname = path.dirname(fileURLToPath(import.meta.url));
 process.on('unhandledRejection', (err) => {
 	throw err;
 });
 
-export async function init(proj = process.cwd()) {
-	const projName = path.basename(proj) ?? 'my-fancy-dreamsheet';
-	const projDir = path.isAbsolute(proj)
-		? proj
-		: path.resolve(process.cwd(), proj);
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+const rootDir = path.resolve(dirname, '../..');
+export async function init(projDir = '') {
+	projDir = path.resolve(projDir);
+	const projName = path.basename(projDir) ?? 'my-fancy-dreamsheet';
 
 	const oldWd = process.cwd();
 	try {
@@ -18,7 +17,7 @@ export async function init(proj = process.cwd()) {
 		process.chdir(projDir);
 
 		// Copy over template files
-		const templateDir = path.resolve(dirname, '../../template');
+		const templateDir = path.join(rootDir, 'template');
 
 		const add = async (templateFile: string, newName = templateFile) => {
 			if (!templateFile) {
@@ -54,12 +53,24 @@ export async function init(proj = process.cwd()) {
 
 		// the following is equivalent to `await add('template-package.json', 'package.json')`
 		const templatePkgPath = path.join(templateDir, 'template-package.json');
-		const packageCfg = await fs.readJSON(templatePkgPath, { encoding: 'utf8' });
-		packageCfg['name'] = projName;
+		const templatePkg = await fs.readJSON(templatePkgPath, {
+			encoding: 'utf8',
+		});
+		templatePkg['name'] = projName;
+		const { version } = await fs.readJSON(path.join(rootDir, 'package.json'), {
+			encoding: 'utf8',
+		});
+		templatePkg['devDependencies'] = {
+			...templatePkg['devDependencies'],
+			'dreamsheets-scripts': `^${version}` ?? 'latest',
+		};
 
 		const projPkgFilePath = path.join(projDir, 'package.json');
 		if (!(await fs.pathExists(projPkgFilePath))) {
-			await fs.writeJSON(projPkgFilePath, packageCfg, { encoding: 'utf8' });
+			await fs.writeJSON(projPkgFilePath, templatePkg, {
+				encoding: 'utf8',
+				spaces: 2,
+			});
 		} else {
 			console.warn(
 				`Skipping: Project file package.json already exists in ${path.dirname(
