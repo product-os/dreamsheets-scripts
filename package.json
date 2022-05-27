@@ -2,7 +2,7 @@
   "name": "dreamsheets-scripts",
   "author": {
     "name": "Somo S.",
-    "email": "somo@mombo.solutions"
+    "email": "somo@balena.io"
   },
   "license": "Apache-2.0",
   "repository": {
@@ -31,7 +31,7 @@
     "dsx": "./bin/main.mjs"
   },
   "scripts": {
-    "start": "node --unhandled-rejections=strict .",
+    "start": "npm exec --yes --package=\"dreamsheets-scripts@file:.\" -- dsx",
     "prepare": "husky install",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",

@@ -7,8 +7,11 @@
 # doesn't work because of https://github.com/okonet/lint-staged/issues/1154
 # so we are doing it manually below instead
 
-echo
-echo "Linting Staged ..."
-npx --yes @balena/lint --fix $(git diff --staged --diff-filter=ACMR --name-only | grep -E '\.ts$|\.js$')
-echo "Done Linting Staged!"
-echo
+tostage=$(git diff --staged --diff-filter=ACMR --name-only | grep -E '\.ts$|\.js$' | xargs || true)
+if [ -n "$tostage" ]; then
+	echo
+	echo "Linting Staged ..."
+	npm exec --yes --package="@balena/lint@latest" -- balena-lint --fix $tostage
+	echo "Done Linting Staged!"
+	echo
+fi

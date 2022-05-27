@@ -18,8 +18,19 @@ const DEFAULT_HUSKYDIR =
 await yargs(hideBin(process.argv))
 	.usage('Usage: $0 <command> [options]')
 	.command(
+		'init <projectNameOrPath>',
+		'initializes/hydrates the codebase',
+		NOP,
+		async ({ projectNameOrPath }) => init(projectNameOrPath),
+	)
+	.command('prepare [huskyDir]', false, NOP, ({ huskyDir }) =>
+		husky.install(huskyDir ?? DEFAULT_HUSKYDIR),
+	)
+	.command('test', 'tests the source', NOP, async () => test(jestConfig))
+	.command('build', 'builds the source', NOP, async () => build(webpackConfig))
+	.command(
 		'push [scriptId]',
-		'push the bundle',
+		'deploys the bundled code into a live spreadsheet specified via the scriptId',
 		NOP,
 		async ({ scriptId: argScriptId }) => {
 			const scriptId = argScriptId ?? process?.env.DSX_SCRIPT_ID;
@@ -32,17 +43,14 @@ await yargs(hideBin(process.argv))
 			return push(scriptId);
 		},
 	)
-	.command('build', 'build the source', NOP, async () => build(webpackConfig))
-	.command('test', 'test the source', NOP, async () => test(jestConfig))
-	.command(
-		'init [projectDir]',
-		'initialize the codebase',
-		NOP,
-		async ({ projectDir }) => init(projectDir),
+	.demandCommand(
+		1,
+		1,
+		'Error: Please specify a Command. See usage above',
+		'Error: Please specify a Command. See usage above',
 	)
-	.command('prepare [huskyDir]', 'prepare the codebase', NOP, ({ huskyDir }) =>
-		husky.install(huskyDir ?? DEFAULT_HUSKYDIR),
-	)
+	.strict()
 	.scriptName('dsx')
-	.help('h')
+	.help('help')
+	.alias('help', 'h')
 	.parseAsync();
