@@ -19,18 +19,23 @@ await yargs(hideBin(process.argv))
 	.usage('Usage: $0 <command> [options]')
 	.command(
 		'init <projectNameOrPath>',
-		'initializes/hydrates the codebase',
+		'initializes/hydrates the codebase and installs dependancies',
 		NOP,
 		async ({ projectNameOrPath }) => init(projectNameOrPath),
 	)
 	.command('prepare [huskyDir]', false, NOP, ({ huskyDir }) =>
 		husky.install(huskyDir ?? DEFAULT_HUSKYDIR),
 	)
-	.command('test', 'tests the source', NOP, async () => test(jestConfig))
-	.command('build', 'builds the source', NOP, async () => build(webpackConfig))
+	.command('test', 'runs unit tests', NOP, async () => test(jestConfig))
+	.command(
+		'build',
+		'builds the source code into a single bundle located at in readiness for deployment',
+		NOP,
+		async () => build(webpackConfig),
+	)
 	.command(
 		'push [scriptId]',
-		'deploys the bundled code into a live spreadsheet specified via the scriptId',
+		'deploys the bundled code into a live spreadsheet specified using the scriptId',
 		NOP,
 		async ({ scriptId: argScriptId }) => {
 			const scriptId = argScriptId ?? process?.env.DSX_SCRIPT_ID;
