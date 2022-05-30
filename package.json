@@ -70,8 +70,8 @@
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   },
-  "version": "0.4.10",
+  "version": "0.5.0",
   "versionist": {
-    "publishedAt": "2022-05-27T11:50:32.125Z"
+    "publishedAt": "2022-05-30T13:11:28.160Z"
   }
 }
