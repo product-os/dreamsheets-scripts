@@ -5,10 +5,13 @@ process.on('unhandledRejection', (err) => {
 	throw err;
 });
 
+const isDebugEnv =
+	process?.env?.NODE_ENV?.toLowerCase() === 'dev' ||
+	process?.env?.NODE_ENV?.toLowerCase() === 'development';
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(dirname, '../..');
 export async function init(proj: string) {
-	$.verbose = false;
+	$.verbose = isDebugEnv;
 	if (typeof proj !== 'string' || !proj.length) {
 		throw new Error('Please provide a valid project directory');
 	}
