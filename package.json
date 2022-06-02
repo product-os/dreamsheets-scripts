@@ -31,7 +31,7 @@
     "dsx": "./bin/main.mjs"
   },
   "scripts": {
-    "start": "npm exec --yes --package=\"dreamsheets-scripts@file:.\" -- dsx",
+    "start": "rimraf example.ignore && npm exec --yes --package=\"dreamsheets-scripts@file:.\" -- dsx init example.ignore --package-version=\"file:..\"",
     "prepare": "husky install",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
