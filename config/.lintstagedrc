@@ -1,0 +1,5 @@
+{
+    "*.ts": [
+        "npm exec --yes --package @balena/lint@latest -- balena-lint --fix"
+    ]
+}

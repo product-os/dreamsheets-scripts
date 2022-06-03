@@ -1,20 +1,20 @@
 {
 	"*.ts": [
-		"npx @balena/lint --fix"
+		"npm exec --yes --package @balena/lint@latest -- balena-lint --fix"
 	],
 	"*.cts": [
-		"npx @balena/lint --fix"
+		"npm exec --yes --package @balena/lint@latest -- balena-lint --fix"
 	],
 	"*.mts": [
-		"npx @balena/lint --fix"
+		"npm exec --yes --package @balena/lint@latest -- balena-lint --fix"
 	],
 	"*.js": [
-		"npx @balena/lint --fix"
+		"npm exec --yes --package @balena/lint@latest -- balena-lint --fix"
 	],
 	"*.cjs": [
-		"npx @balena/lint --fix"
+		"npm exec --yes --package @balena/lint@latest -- balena-lint --fix"
 	],
 	"*.mjs": [
-		"npx @balena/lint --fix"
+		"npm exec --yes --package @balena/lint@latest -- balena-lint --fix"
 	]
 }

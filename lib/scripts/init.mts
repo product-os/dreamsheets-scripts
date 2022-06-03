@@ -7,7 +7,7 @@ export async function init(
 	proj: string,
 	{ version = O.version, debug = false }: typeof O = O,
 ) {
-	$.verbose = debug;
+	$.verbose = debug as any; // TODO: remove `as any` when  https://github.com/google/zx/pull/422 is released in version >6.2.0
 	if (typeof proj !== 'string' || !proj.length) {
 		throw new Error('Please provide a valid project directory');
 	}
