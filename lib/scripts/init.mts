@@ -1,17 +1,13 @@
 import { fs, path, $, quiet } from 'zx';
-import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
-process.on('unhandledRejection', (err) => {
-	throw err;
-});
+import { VERSION, ROOT_DIR } from '../constants.mjs';
 
-const isDebugEnv =
-	process?.env?.NODE_ENV?.toLowerCase() === 'dev' ||
-	process?.env?.NODE_ENV?.toLowerCase() === 'development';
-const dirname = path.dirname(fileURLToPath(import.meta.url));
-const rootDir = path.resolve(dirname, '../..');
-export async function init(proj: string) {
-	$.verbose = isDebugEnv;
+const O = { version: VERSION, debug: false };
+export async function init(
+	proj: string,
+	{ version = O.version, debug = false }: typeof O = O,
+) {
+	$.verbose = debug as any; // TODO: remove `as any` when  https://github.com/google/zx/pull/422 is released in version >6.2.0
 	if (typeof proj !== 'string' || !proj.length) {
 		throw new Error('Please provide a valid project directory');
 	}
@@ -25,7 +21,7 @@ export async function init(proj: string) {
 		process.chdir(projDir);
 
 		// Copy over template files
-		const templateDir = path.join(rootDir, 'template');
+		const templateDir = path.join(ROOT_DIR, 'template');
 
 		const add = async (templateFile: string, newName = templateFile) => {
 			if (!templateFile) {
@@ -64,12 +60,13 @@ export async function init(proj: string) {
 			encoding: 'utf8',
 		});
 		templatePkg['name'] = projName;
-		const { version } = await fs.readJSON(path.join(rootDir, 'package.json'), {
-			encoding: 'utf8',
-		});
+		const pkgVersion = `${version}` ?? 'latest';
+		console.log(
+			`\n  ... Using package version "dreamsheets-scripts@${pkgVersion}"\n`,
+		);
 		templatePkg['devDependencies'] = {
 			...templatePkg['devDependencies'],
-			'dreamsheets-scripts': `^${version}` ?? 'latest',
+			'dreamsheets-scripts': pkgVersion,
 		};
 
 		const projPkgFilePath = path.join(projDir, 'package.json');

@@ -1,8 +1,9 @@
 import { os, fs, path } from 'zx';
 
+import { DEFAULT_OAUTH_SCOPE } from '../constants.mjs';
 export async function push(
 	scriptId: string,
-	oauthScopes = ['https://www.googleapis.com/auth/spreadsheets'],
+	oauthScopes = [DEFAULT_OAUTH_SCOPE],
 ) {
 	if (!scriptId) {
 		throw new Error('Please provide a script-id');
