@@ -10,3 +10,6 @@ export const { version: VERSION }: { version?: string } = await fs.readJSON(
 		encoding: 'utf8',
 	},
 );
+
+export const DEFAULT_OAUTH_SCOPE =
+	'https://www.googleapis.com/auth/spreadsheets';

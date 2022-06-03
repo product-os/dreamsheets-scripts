@@ -4,7 +4,7 @@ process.on('unhandledRejection', (err) => {
 });
 import 'dotenv/config';
 import { push, build, test, init } from '../dist/index.mjs';
-import { VERSION } from '../dist/constants.mjs';
+import { VERSION, DEFAULT_OAUTH_SCOPE } from '../dist/constants.mjs';
 import webpackConfig from '../config/webpack.config.mjs';
 import jestConfig from '../config/jest.config.cjs';
 import husky from 'husky';
@@ -51,16 +51,31 @@ await yargs(hideBin(process.argv))
 	.command(
 		'push [script-id]',
 		'deploys the bundled code into a live spreadsheet specified using the script-id',
-		NOP,
-		async ({ scriptId: argScriptId }) => {
+		(y) =>
+			y.option('oauthScopes', {
+				alias: 's',
+				describe:
+					'Comma separated list of OAuth scopes as described at https://developers.google.com/apps-script/concepts/scopes',
+				type: 'string',
+				default: DEFAULT_OAUTH_SCOPE,
+			}),
+		async ({ scriptId: argScriptId, oauthScopes: argOauthScopes }) => {
 			const scriptId = argScriptId ?? process?.env.DSX_SCRIPT_ID;
+
 			if (!scriptId) {
 				console.error(
 					'Error: To push, please provide a `script-id` via a command-line argument or environment variable',
 				);
 				process.exit(1);
 			}
-			return push(scriptId);
+
+			const oauthScopes = (argOauthScopes ?? '')
+				.split(',')
+				.map((s) => s.trim());
+			if (!oauthScopes.length) {
+				oauthScopes.push(DEFAULT_OAUTH_SCOPE);
+			}
+			return push(scriptId, oauthScopes);
 		},
 	)
 	.demandCommand(
