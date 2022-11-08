@@ -1,0 +1,410 @@
+- commits:
+    - subject: generate flowzonified project
+      hash: 4298f8bc5afa3d5111d309b230f8cb5ef0d42f9c
+      body: Use flowzone for CI instead of balenaci.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Somo S <somo@balena.io>
+        signed-off-by: Somo S <somo@balena.io>
+      author: Somo S
+    - subject: Replace balenaCI with flowzone
+      hash: c3a7924aafcf26e76636c2f519edb66401b90771
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Somo S
+  version: 0.7.0
+  title: ""
+  date: 2022-11-08T13:38:31.957Z
+- version: 0.6.0
+  date: 2022-06-03T02:10:04Z
+  commits:
+    - hash: 2e027be8b5afb7e011e91d0960d1202592e5ecb5
+      author: Somo S
+      footers:
+        change-type: minor
+        signed-off-by: Somo S <somo@balena.io>
+      subject: "feat(init): specify package version/location"
+      body: null
+    - hash: 62c0b1866d9bc9cd3ef3f5a75999e1a22317be30
+      author: Somo S
+      subject: fix lint-staged support
+      body: |-
+        fixes #22
+        Change-type: patch
+        Signed-off-by: Somo S <somo@balena.io>
+    - hash: 5a74d60ea1c75040c9ea23e8c3d9db78e78bdf05
+      author: Somo S
+      footers:
+        change-type: patch
+        signed-off-by: Somo S <somo@balena.io>
+      subject: fix support for oauth scopes
+      body: null
+    - hash: 13406f3c4ce916a74f723e4a89a9d595038100e2
+      author: Somo S
+      footers:
+        change: patch
+        signed-off-by: Somo S <somo@balena.io>
+      subject: add installation and oAuthScope docs
+      body: null
+- version: 0.5.0
+- date: 2022-05-30T13:15:38Z
+- commits:
+    - hash: 76ed44a5d9e5a7e5323e340dfc7bf615f1c3491d
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: make output verbose when NODE_ENV is `dev`
+- commits:
+    - body: null
+- version: 0.4.10
+- date: 2022-05-27T11:56:13Z
+- commits:
+    - hash: 47789ceb4b2f150c4044cbba321d0469ced14470
+- commits:
+    - author: Somo
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: improve the docs
+- commits:
+    - body: null
+- version: 0.4.9
+- date: 2022-05-27T01:21:00Z
+- commits:
+    - hash: 7505c24b4b83cf563301301add214d79d3a8a23f
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: "init: commit only if there are no commits"
+- commits:
+    - body: null
+- version: 0.4.8
+- date: 2022-05-26T12:33:43Z
+- commits:
+    - hash: 45eee6a4191757195c0bbd1ce0204744f38980c7
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: add license
+- commits:
+    - body: null
+- commits:
+    - hash: 65715090a733862543cb5d685d5a2adb6f38dca8
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: fix local dsx init
+- commits:
+    - body: >-
+        also set './node_modules/dreamsheets-scripts/config/project.husky' to
+        default husky directory
+
+        Change-type: patch
+- version: 0.4.7
+- date: 2022-05-25T18:35:47Z
+- commits:
+    - hash: f5a112716729069cfad4dcb26263a73e763bcc08
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: remove test script-id from template package.json
+- commits:
+    - body: null
+- version: 0.4.6
+- date: 2022-05-25T18:06:18Z
+- commits:
+    - hash: ea1b8e0bd6e2c0fb021ebe3097d0c0bd59a537b6
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: npm install after git init
+- commits:
+    - body: null
+- version: 0.4.5
+- date: 2022-05-25T17:33:10Z
+- commits:
+    - hash: 4d3e525e4435526640d79b6a8b011cb25263d6fc
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: rename template package.json
+- commits:
+    - body: null
+- version: 0.4.4
+- date: 2022-05-25T16:26:37Z
+- commits:
+    - hash: 38e1c685bb55d0d36868c875a29dd8e11002a705
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: add package author and repo url
+- commits:
+    - body: null
+- version: 0.4.3
+- date: 2022-05-25T15:07:33Z
+- commits:
+    - hash: 9ce73c4b64a3752fdefcdf51632c7313a7fe5cb1
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: fix template files accidentally ignored
+- commits:
+    - body: null
+- version: 0.4.2
+- date: 2022-05-25T14:42:12Z
+- commits:
+    - hash: 12852b091b25a82144f0760a6cdcc78860eca433
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: fix publish template
+- commits:
+    - body: null
+- version: 0.4.1
+- date: 2022-05-25T14:22:52Z
+- commits:
+    - hash: b1b05f2522c96e815910fbb3f71ee8fe6bb16359
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: fix husky
+- commits:
+    - body: null
+- version: 0.4.0
+- date: 2022-05-25T13:57:12Z
+- commits:
+    - hash: 0d4dd9264522367be641ab6aeb9c025ef84aec25
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@mombo.solutions>
+- commits:
+    - subject: add dsx prepare subcommand
+- commits:
+    - body: null
+- commits:
+    - hash: 0043a54d86bc8aa09ab75a72db9cc0034b410784
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@mombo.solutions>
+- commits:
+    - subject: impiment init subcommand for scaffolding
+- commits:
+    - body: null
+- version: 0.3.1
+- date: 2022-05-25T13:33:01Z
+- commits:
+    - hash: a4edda935fc2293bff725c29822b2f30df4f34e9
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@mombo.solutions>
+- commits:
+    - subject: support setting push scriptId via ENV_VAR
+- commits:
+    - body: null
+- version: 0.3.0
+- date: 2022-05-21T12:10:57Z
+- commits:
+    - hash: 2ef5b7220c07d00e9b31c37fb54b5447c485d8f7
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: support linting staged source files
+- commits:
+    - body: null
+- version: 0.2.1
+- date: 2022-05-20T12:30:46Z
+- commits:
+    - hash: 8c75bb3422277c5b88267c16c158c378bb4305da
+- commits:
+    - author: Somo
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: Update README.md
+- commits:
+    - body: null
+- version: 0.2.0
+- date: 2022-05-19T03:40:06Z
+- commits:
+    - hash: a02e2b5219c38fd753af95db0dd89c0981cb20bc
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: add testing facilities
+- commits:
+    - body: null
+- version: 0.1.1
+- date: 2022-04-29T04:02:09Z
+- commits:
+    - hash: 1b52501a3497e076d0e22772959b767114b8e1eb
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: distribute config dir in package
+- commits:
+    - body: null
+- version: 0.1.0
+- date: 2022-04-29T03:42:48Z
+- commits:
+    - hash: 9bf04f9553e48bb3c20830636975c49e266d4826
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: update readme to show unimplimented functions
+- commits:
+    - body: null
+- commits:
+    - hash: 5fb9a5e7d0c40df78c0696003e49d1863e892220
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: fix tests
+- commits:
+    - body: null
+- commits:
+    - hash: 18d538372bc54451eb4b6ad6b03e66425b5d55c5
+- commits:
+    - author: Somo S
+- commits:
+    - footers:
+        change-type: minor
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: add build and push
+- commits:
+    - body: null
+- commits:
+    - hash: cc541bf02326b864b1592457b39fdbdd8436b48c
+- commits:
+    - author: Somo
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Somo S <somo@balena.io>
+- commits:
+    - subject: improve and clarify project mission/description
+- commits:
+    - body: null
