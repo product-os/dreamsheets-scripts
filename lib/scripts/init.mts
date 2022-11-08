@@ -52,7 +52,7 @@ export async function init(
 		await add('LICENSE');
 		await add('tsconfig.template.json', 'tsconfig.json');
 		await add('README.md');
-		await add('repo.yml');
+		await add('.github/workflows/flowzone.yml');
 
 		// the following is equivalent to `await add('template-package.json', 'package.json')`
 		const templatePkgPath = path.join(templateDir, 'template-package.json');
