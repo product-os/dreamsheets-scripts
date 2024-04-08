@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update dependency zx to v6.2.5
+      hash: 2984e2122edc7c958ac62d13eed49eef3c986875
+      body: |
+        Update zx from 6.1.0 to 6.2.5
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+  version: 0.7.1
+  title: ""
+  date: 2024-04-08T17:57:25.937Z
+- commits:
     - subject: generate flowzonified project
       hash: 4298f8bc5afa3d5111d309b230f8cb5ef0d42f9c
       body: Use flowzone for CI instead of balenaci.
