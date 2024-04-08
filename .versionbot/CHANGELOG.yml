@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update dependency webpack to v5.76.0 [SECURITY]
+      hash: adb38dbd0952bb382592143dd4e328b3c63cf4fb
+      body: |
+        Update webpack from 5.73.0 to 5.76.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+  version: 0.7.2
+  title: ""
+  date: 2024-04-08T18:56:53.084Z
+- commits:
     - subject: Update dependency zx to v6.2.5
       hash: 2984e2122edc7c958ac62d13eed49eef3c986875
       body: |
