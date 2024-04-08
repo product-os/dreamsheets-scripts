@@ -47,7 +47,7 @@
     "@google/clasp": "^2.4.1",
     "dotenv": "^16.0.1",
     "gas-webpack-plugin": "^2.2.1",
-    "husky": "^8.0.1",
+    "husky": "^9.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^13.0.0",
     "ts-jest": "^27.1.4",
