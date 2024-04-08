@@ -54,7 +54,7 @@
     "ts-loader": "^9.2.9",
     "webpack": "^5.72.0",
     "yargs": "^17.4.1",
-    "zx": "6.1.0"
+    "zx": "6.2.5"
   },
   "devDependencies": {
     "@balena/lint": "^6.2.0",
