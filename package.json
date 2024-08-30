@@ -57,7 +57,7 @@
     "zx": "6.2.5"
   },
   "devDependencies": {
-    "@balena/lint": "^6.2.0",
+    "@balena/lint": "^8.0.0",
     "@types/chai": "^4.2.22",
     "@types/chai-as-promised": "^7.1.4",
     "@types/google-apps-script": "^1.0.47",
