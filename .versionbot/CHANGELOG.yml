@@ -1,4 +1,17 @@
 - commits:
+    - subject: "Add id-token: write permission for NPM OIDC publishing"
+      hash: 8fd10545565c3a7ff9e44b95d9152cf7e25913ee
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+  version: 0.7.5
+  title: ""
+  date: 2026-02-19T02:09:12.898Z
+- commits:
     - subject: Update dependency webpack to v5.104.1 [SECURITY]
       hash: b2eab07c560660c282e1c68476fbad411e9351cb
       body: |
