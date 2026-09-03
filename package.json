@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "rimraf example.ignore && npm exec --yes --package=\"dreamsheets-scripts@file:.\" -- dsx init example.ignore --package-version=\"file:..\"",
-    "prepare": "husky install",
+    "prepare": "husky",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
     "build-watch": "npm run --silent build -- --watch",
@@ -47,7 +47,7 @@
     "@google/clasp": "^2.4.1",
     "dotenv": "^16.0.1",
     "gas-webpack-plugin": "^2.2.1",
-    "husky": "^8.0.1",
+    "husky": "^9.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^13.0.0",
     "ts-jest": "^27.1.4",
