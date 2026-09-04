@@ -44,7 +44,7 @@
     "prepack": "npm test"
   },
   "dependencies": {
-    "@google/clasp": "^2.4.1",
+    "@google/clasp": "^3.0.0",
     "dotenv": "^16.0.1",
     "gas-webpack-plugin": "^2.2.1",
     "husky": "^8.0.1",
